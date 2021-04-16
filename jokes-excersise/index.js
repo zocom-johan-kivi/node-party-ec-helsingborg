@@ -5,8 +5,14 @@ const { getRandom, getAll, postJoke } = require('./jokes');
 
 (async () => {
 
-    console.log(await getRandom())
+    try {
+        console.log(await getRandom())
+    }
 
+    catch(err) {
+        console.error(err)
+    }
+    
 })();
 
 

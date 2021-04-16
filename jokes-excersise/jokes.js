@@ -45,7 +45,7 @@ function getAll(){
 function postJoke(newJoke){
     return new Promise((resolve, reject) => {
 
-        fs.appendFile('./jokes.txt', `\n${newJoke}`)
+        fs.writeFile('./jokes.txt', `\n${newJoke}`)
         .then(err => {
             if(err) reject(err);
             resolve('Joke added to file.')
