@@ -50,12 +50,12 @@ app.on('request', (req, res) => {
                 
                 // Parse JSON to Obj
                 let obj = JSON.parse(resp);
-
+                
                 // Reverse it
                 let reversed = reverse(obj.text);
 
                 // Send response to client
-                res.writeHead(200).end(reversed);
+                res.writeHead(200).end(JSON.stringify({ text: reversed }));
 
             })
         }

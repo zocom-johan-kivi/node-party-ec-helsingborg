@@ -13,9 +13,25 @@
 </head>
 <body>
     <h1>Hello, i am a served HTML file.</h1>
+    <p></p>
+    <input type="text">
+    <button>Send!</button>
     <script>
         // All the code
+        document.querySelector('button').addEventListener('click', async () => {
 
+            let text = document.querySelector('input').value;
+
+            let resp = await fetch('/reverse', {
+                method: 'POST',
+                body: JSON.stringify({ text: text })
+            })
+
+            let data = await resp.json();
+            
+            document.querySelector('p').innerText = data.text;
+
+        })
 
     </script>
 </body>
