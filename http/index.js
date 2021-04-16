@@ -1,13 +1,19 @@
 const http = require('http');
 const { reverse } = require('./reverse');
-
+const fs = require('fs');
 
 // Create server instance
 const app = http.createServer();
 
 app.on('request', (req, res) => {
 
-    if(req.url === '/a') {
+    if(req.url === '/') {
+
+        let rs = fs.createReadStream('./index.html');
+        rs.pipe(res)
+    }
+
+    else if(req.url === '/a') {
 
         if(req.method === 'GET'){
             res.writeHead(200).end('Hello A')
@@ -25,11 +31,7 @@ app.on('request', (req, res) => {
                 // Send response to client
                 res.writeHead(200).end(`Hello ${obj.name}, din gamle get!`);
 
-
             })
-
-    
-
         }
         
         else {
@@ -56,9 +58,6 @@ app.on('request', (req, res) => {
                 res.writeHead(200).end(reversed);
 
             })
-
-
-
         }
     }
 
