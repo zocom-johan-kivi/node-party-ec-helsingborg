@@ -6,8 +6,8 @@ const text = require('./routes/text');
 // Middleware
 app.use(Express.json())
 
-
 // Routes
+app.use('/', Express.static('public'))
 app.use('/text', text)
 
 app.listen(3030, () => {
